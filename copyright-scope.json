@@ -1,0 +1,914 @@
+{
+  "copyright": "Copyright 2026 OPPO",
+  "license": "Apache-2.0",
+  "upstream": "https://github.com/Purewhiter/mobilegym",
+  "upstream_revision": "093a3292d13fc4186e279af4ef1b005ac8e4d2b7",
+  "scope": "New code and modifications since the recorded MobileGym v0.1.0 upstream revision. OPPO notices on modified files cover only the modifications; original attribution is retained.",
+  "excluded": [
+    "Unmodified MobileGym, rLLM, VERL and gateway sources.",
+    "Datasets, snapshots, media, generated data and documentation.",
+    "JSON files and task-membership lists; no comment or metadata fields were injected."
+  ],
+  "files": [
+    {
+      "path": ".nginx/nginx.source.conf",
+      "origin": "modified"
+    },
+    {
+      "path": "app.css",
+      "origin": "modified"
+    },
+    {
+      "path": "apps/Alipay/AlipayApp.tsx",
+      "origin": "modified"
+    },
+    {
+      "path": "apps/Alipay/data/index.ts",
+      "origin": "modified"
+    },
+    {
+      "path": "apps/Alipay/pages/PayOrderSettingsPage.tsx",
+      "origin": "modified"
+    },
+    {
+      "path": "apps/Bilibili/BilibiliApp.tsx",
+      "origin": "modified"
+    },
+    {
+      "path": "apps/Bilibili/pages/MePage.tsx",
+      "origin": "modified"
+    },
+    {
+      "path": "apps/Map/hooks/useMapStrings.ts",
+      "origin": "modified"
+    },
+    {
+      "path": "apps/Map/scripts/backfill_map_cache.py",
+      "origin": "new"
+    },
+    {
+      "path": "apps/Map/scripts/backfill_vector_tiles.mjs",
+      "origin": "modified"
+    },
+    {
+      "path": "apps/Map/scripts/bootstrap_manifest_utils.mjs",
+      "origin": "modified"
+    },
+    {
+      "path": "apps/Map/scripts/fetch_geo_snapshot.mjs",
+      "origin": "modified"
+    },
+    {
+      "path": "apps/Map/sw/map-sw.js",
+      "origin": "modified"
+    },
+    {
+      "path": "apps/Map/utils/offlinePlaceStore.ts",
+      "origin": "modified"
+    },
+    {
+      "path": "apps/RedBook/pages/EditProfilePage.tsx",
+      "origin": "modified"
+    },
+    {
+      "path": "apps/RedBook/pages/MePage.tsx",
+      "origin": "modified"
+    },
+    {
+      "path": "apps/Reddit/components/TopBar.tsx",
+      "origin": "modified"
+    },
+    {
+      "path": "apps/Reddit/data/loader.ts",
+      "origin": "modified"
+    },
+    {
+      "path": "apps/Spotify/SpotifyApp.tsx",
+      "origin": "modified"
+    },
+    {
+      "path": "apps/Spotify/components/TrackMenuSheet.tsx",
+      "origin": "modified"
+    },
+    {
+      "path": "apps/Spotify/pages/LikedSongsPage.tsx",
+      "origin": "modified"
+    },
+    {
+      "path": "apps/TencentMeeting/pages/MePage.tsx",
+      "origin": "modified"
+    },
+    {
+      "path": "apps/TencentMeeting/pages/ProfilePage.tsx",
+      "origin": "modified"
+    },
+    {
+      "path": "apps/Weather/WeatherApp.tsx",
+      "origin": "modified"
+    },
+    {
+      "path": "apps/Weather/components/DailyForecastShort.tsx",
+      "origin": "modified"
+    },
+    {
+      "path": "apps/Weather/components/DetailsGrid.tsx",
+      "origin": "modified"
+    },
+    {
+      "path": "apps/Weather/components/HourlyForecastChart.tsx",
+      "origin": "modified"
+    },
+    {
+      "path": "apps/Weather/components/LifeIndices.tsx",
+      "origin": "modified"
+    },
+    {
+      "path": "apps/Weather/pages/WeatherCitySearchPage.tsx",
+      "origin": "modified"
+    },
+    {
+      "path": "apps/Weather/pages/WeatherDailyForecastPage.tsx",
+      "origin": "modified"
+    },
+    {
+      "path": "apps/Weather/pages/WeatherPermissionsPage.tsx",
+      "origin": "modified"
+    },
+    {
+      "path": "apps/Weather/pages/WeatherPrivacySettingsPage.tsx",
+      "origin": "modified"
+    },
+    {
+      "path": "apps/Weather/pages/WeatherSettingsPage.tsx",
+      "origin": "modified"
+    },
+    {
+      "path": "apps/Weather/res/colors.ts",
+      "origin": "modified"
+    },
+    {
+      "path": "apps/Weather/res/visual.ts",
+      "origin": "new"
+    },
+    {
+      "path": "apps/Wechat/WechatApp.tsx",
+      "origin": "modified"
+    },
+    {
+      "path": "apps/Wechat/components/TabBar.tsx",
+      "origin": "modified"
+    },
+    {
+      "path": "apps/Wechat/pages/Me.tsx",
+      "origin": "modified"
+    },
+    {
+      "path": "apps/Wechat/pages/contacts/UserProfile.tsx",
+      "origin": "modified"
+    },
+    {
+      "path": "apps/Wechat/pages/discover/Discover.tsx",
+      "origin": "modified"
+    },
+    {
+      "path": "apps/Wechat/pages/settings/Settings.tsx",
+      "origin": "modified"
+    },
+    {
+      "path": "apps/Wechat/res/visual.ts",
+      "origin": "new"
+    },
+    {
+      "path": "apps/WechatReading/WechatReadingApp.tsx",
+      "origin": "modified"
+    },
+    {
+      "path": "apps/WechatReading/components/TabBar.tsx",
+      "origin": "modified"
+    },
+    {
+      "path": "apps/WechatReading/pages/MePage.tsx",
+      "origin": "modified"
+    },
+    {
+      "path": "apps/WechatReading/pages/ReaderPage.tsx",
+      "origin": "modified"
+    },
+    {
+      "path": "apps/WechatReading/pages/SettingsPage.tsx",
+      "origin": "modified"
+    },
+    {
+      "path": "apps/WechatReading/pages/settings/AutoDownloadPage.tsx",
+      "origin": "modified"
+    },
+    {
+      "path": "apps/WechatReading/pages/settings/PrivacyPage.tsx",
+      "origin": "modified"
+    },
+    {
+      "path": "apps/WechatReading/res/visual.ts",
+      "origin": "new"
+    },
+    {
+      "path": "apps/X/data/index.ts",
+      "origin": "modified"
+    },
+    {
+      "path": "apps/X/data/loader.ts",
+      "origin": "modified"
+    },
+    {
+      "path": "apps/X/pages/SearchPage.tsx",
+      "origin": "modified"
+    },
+    {
+      "path": "bench_env/agent/generic_v2.py",
+      "origin": "modified"
+    },
+    {
+      "path": "bench_env/completeness.py",
+      "origin": "new"
+    },
+    {
+      "path": "bench_env/completeness_check.py",
+      "origin": "new"
+    },
+    {
+      "path": "bench_env/config.py",
+      "origin": "modified"
+    },
+    {
+      "path": "bench_env/env/mobile_gym.py",
+      "origin": "modified"
+    },
+    {
+      "path": "bench_env/feature_completeness.py",
+      "origin": "new"
+    },
+    {
+      "path": "bench_env/llm/openai_chat.py",
+      "origin": "modified"
+    },
+    {
+      "path": "bench_env/reference.py",
+      "origin": "new"
+    },
+    {
+      "path": "bench_env/reference_dom.js",
+      "origin": "new"
+    },
+    {
+      "path": "bench_env/reference_runtime.py",
+      "origin": "new"
+    },
+    {
+      "path": "bench_env/requirements.txt",
+      "origin": "modified"
+    },
+    {
+      "path": "bench_env/rerun.py",
+      "origin": "modified"
+    },
+    {
+      "path": "bench_env/run.py",
+      "origin": "modified"
+    },
+    {
+      "path": "bench_env/runner/base.py",
+      "origin": "modified"
+    },
+    {
+      "path": "bench_env/runner/parallel.py",
+      "origin": "modified"
+    },
+    {
+      "path": "bench_env/runner/serial.py",
+      "origin": "modified"
+    },
+    {
+      "path": "bench_env/splits.py",
+      "origin": "modified"
+    },
+    {
+      "path": "bench_env/task/calendar/tasks.py",
+      "origin": "modified"
+    },
+    {
+      "path": "bench_env/task/common_tasks.py",
+      "origin": "modified"
+    },
+    {
+      "path": "bench_env/task/crossapp_work/tasks.py",
+      "origin": "modified"
+    },
+    {
+      "path": "bench_env/task/map/app.py",
+      "origin": "modified"
+    },
+    {
+      "path": "bench_env/task/map/defs/NorthResearchInstituteAnswer.py",
+      "origin": "modified"
+    },
+    {
+      "path": "bench_env/task/map/tasks.py",
+      "origin": "modified"
+    },
+    {
+      "path": "bench_env/tests/calendar/test_tasks.py",
+      "origin": "modified"
+    },
+    {
+      "path": "bench_env/tests/common/test_answer_action.py",
+      "origin": "modified"
+    },
+    {
+      "path": "bench_env/tests/common/test_common_tasks.py",
+      "origin": "modified"
+    },
+    {
+      "path": "bench_env/tests/common/test_completeness.py",
+      "origin": "new"
+    },
+    {
+      "path": "bench_env/tests/common/test_env_effect_v3_split.py",
+      "origin": "new"
+    },
+    {
+      "path": "bench_env/tests/common/test_feature_completeness.py",
+      "origin": "new"
+    },
+    {
+      "path": "bench_env/tests/common/test_feature_completeness_live.py",
+      "origin": "new"
+    },
+    {
+      "path": "bench_env/tests/common/test_feature_plus_live.py",
+      "origin": "new"
+    },
+    {
+      "path": "bench_env/tests/common/test_lite.py",
+      "origin": "new"
+    },
+    {
+      "path": "bench_env/tests/common/test_lite_live.py",
+      "origin": "new"
+    },
+    {
+      "path": "bench_env/tests/common/test_recorder.py",
+      "origin": "modified"
+    },
+    {
+      "path": "bench_env/tests/common/test_reference.py",
+      "origin": "new"
+    },
+    {
+      "path": "bench_env/tests/common/test_reference_dom.py",
+      "origin": "new"
+    },
+    {
+      "path": "bench_env/tests/crossapp_work/test_tasks.py",
+      "origin": "modified"
+    },
+    {
+      "path": "bench_env/tests/map/test_tasks.py",
+      "origin": "modified"
+    },
+    {
+      "path": "bench_env/tests/task_defs/_defs_runner.py",
+      "origin": "modified"
+    },
+    {
+      "path": "bench_env/tests/task_defs/_shared_hard.py",
+      "origin": "modified"
+    },
+    {
+      "path": "bench_env/visual.py",
+      "origin": "new"
+    },
+    {
+      "path": "index.tsx",
+      "origin": "modified"
+    },
+    {
+      "path": "mobilegym-rl/cookbooks/mobilegym/check_training_inputs.py",
+      "origin": "new"
+    },
+    {
+      "path": "mobilegym-rl/cookbooks/mobilegym/diagnose_hf_logprobs.py",
+      "origin": "new"
+    },
+    {
+      "path": "mobilegym-rl/cookbooks/mobilegym/diagnose_vllm_logprobs.py",
+      "origin": "new"
+    },
+    {
+      "path": "mobilegym-rl/cookbooks/mobilegym/eval_mobilegym_4ppu_3runs.sh",
+      "origin": "new"
+    },
+    {
+      "path": "mobilegym-rl/cookbooks/mobilegym/evaluator.py",
+      "origin": "modified"
+    },
+    {
+      "path": "mobilegym-rl/cookbooks/mobilegym/export_latest_checkpoint.py",
+      "origin": "new"
+    },
+    {
+      "path": "mobilegym-rl/cookbooks/mobilegym/mobilegym_flow.py",
+      "origin": "modified"
+    },
+    {
+      "path": "mobilegym-rl/cookbooks/mobilegym/monitor_training_memory.sh",
+      "origin": "new"
+    },
+    {
+      "path": "mobilegym-rl/cookbooks/mobilegym/run_qwen3_vl_4b_env_effect_v3_full.sh",
+      "origin": "new"
+    },
+    {
+      "path": "mobilegym-rl/cookbooks/mobilegym/serve_vllm.py",
+      "origin": "new"
+    },
+    {
+      "path": "mobilegym-rl/cookbooks/mobilegym/train.py",
+      "origin": "modified"
+    },
+    {
+      "path": "mobilegym-rl/cookbooks/mobilegym/train_mobilegym_gspo_full.sh",
+      "origin": "new"
+    },
+    {
+      "path": "mobilegym-rl/cookbooks/mobilegym/train_qwen3_vl_4b_gspo_full.sh",
+      "origin": "new"
+    },
+    {
+      "path": "mobilegym-rl/cookbooks/mobilegym/training_config.py",
+      "origin": "new"
+    },
+    {
+      "path": "mobilegym-rl/cookbooks/mobilegym/verl_dataset.py",
+      "origin": "new"
+    },
+    {
+      "path": "mobilegym-rl/install.sh",
+      "origin": "modified"
+    },
+    {
+      "path": "mobilegym-rl/pyproject.toml",
+      "origin": "modified"
+    },
+    {
+      "path": "mobilegym-rl/requirements-runtime.txt",
+      "origin": "new"
+    },
+    {
+      "path": "mobilegym-rl/rllm-model-gateway/src/rllm_model_gateway/client.py",
+      "origin": "modified"
+    },
+    {
+      "path": "mobilegym-rl/rllm-model-gateway/src/rllm_model_gateway/proxy.py",
+      "origin": "modified"
+    },
+    {
+      "path": "mobilegym-rl/rllm-model-gateway/src/rllm_model_gateway/server.py",
+      "origin": "modified"
+    },
+    {
+      "path": "mobilegym-rl/rllm-model-gateway/src/rllm_model_gateway/session_router.py",
+      "origin": "modified"
+    },
+    {
+      "path": "mobilegym-rl/rllm-model-gateway/tests/unit/test_gateway_client.py",
+      "origin": "modified"
+    },
+    {
+      "path": "mobilegym-rl/rllm-model-gateway/tests/unit/test_server.py",
+      "origin": "modified"
+    },
+    {
+      "path": "mobilegym-rl/rllm/experimental/clip_schedule.py",
+      "origin": "new"
+    },
+    {
+      "path": "mobilegym-rl/rllm/experimental/config/rllm/base.yaml",
+      "origin": "modified"
+    },
+    {
+      "path": "mobilegym-rl/rllm/experimental/engine/agent_flow_engine.py",
+      "origin": "modified"
+    },
+    {
+      "path": "mobilegym-rl/rllm/experimental/engine/gateway_manager.py",
+      "origin": "modified"
+    },
+    {
+      "path": "mobilegym-rl/rllm/experimental/engine/trace_converter.py",
+      "origin": "modified"
+    },
+    {
+      "path": "mobilegym-rl/rllm/experimental/memory_diagnostics.py",
+      "origin": "new"
+    },
+    {
+      "path": "mobilegym-rl/rllm/experimental/rollout/verl_engine.py",
+      "origin": "modified"
+    },
+    {
+      "path": "mobilegym-rl/rllm/experimental/unified_trainer.py",
+      "origin": "modified"
+    },
+    {
+      "path": "mobilegym-rl/rllm/experimental/verl/transform.py",
+      "origin": "modified"
+    },
+    {
+      "path": "mobilegym-rl/rllm/experimental/verl/verl_advantage.py",
+      "origin": "modified"
+    },
+    {
+      "path": "mobilegym-rl/rllm/experimental/verl/verl_backend.py",
+      "origin": "modified"
+    },
+    {
+      "path": "mobilegym-rl/rllm/parser/chat_template_parser.py",
+      "origin": "modified"
+    },
+    {
+      "path": "mobilegym-rl/tests/test_actor_clip_schedule.py",
+      "origin": "new"
+    },
+    {
+      "path": "mobilegym-rl/tests/test_agent_flow_gateway_cleanup.py",
+      "origin": "new"
+    },
+    {
+      "path": "mobilegym-rl/tests/test_episode_weighting.py",
+      "origin": "new"
+    },
+    {
+      "path": "mobilegym-rl/tests/test_eval_vllm_startup.py",
+      "origin": "new"
+    },
+    {
+      "path": "mobilegym-rl/tests/test_export_latest_checkpoint.py",
+      "origin": "new"
+    },
+    {
+      "path": "mobilegym-rl/tests/test_memory_diagnostics.py",
+      "origin": "new"
+    },
+    {
+      "path": "mobilegym-rl/tests/test_mobilegym_completeness.py",
+      "origin": "new"
+    },
+    {
+      "path": "mobilegym-rl/tests/test_mobilegym_reference.py",
+      "origin": "new"
+    },
+    {
+      "path": "mobilegym-rl/tests/test_model_entrypoints.py",
+      "origin": "new"
+    },
+    {
+      "path": "mobilegym-rl/tests/test_multimodal_batch.py",
+      "origin": "new"
+    },
+    {
+      "path": "mobilegym-rl/tests/test_rollout_lora_routing.py",
+      "origin": "new"
+    },
+    {
+      "path": "mobilegym-rl/tests/test_rollout_seed.py",
+      "origin": "new"
+    },
+    {
+      "path": "mobilegym-rl/tests/test_rollout_startup.py",
+      "origin": "new"
+    },
+    {
+      "path": "mobilegym-rl/tests/test_training_config.py",
+      "origin": "new"
+    },
+    {
+      "path": "mobilegym-rl/tests/test_training_input_gate.py",
+      "origin": "new"
+    },
+    {
+      "path": "mobilegym-rl/tests/test_training_padding.py",
+      "origin": "new"
+    },
+    {
+      "path": "mobilegym-rl/verl/verl/experimental/agent_loop/agent_loop.py",
+      "origin": "modified"
+    },
+    {
+      "path": "mobilegym-rl/verl/verl/model_merger/_peft_compat.py",
+      "origin": "new"
+    },
+    {
+      "path": "mobilegym-rl/verl/verl/model_merger/base_model_merger.py",
+      "origin": "modified"
+    },
+    {
+      "path": "mobilegym-rl/verl/verl/models/transformers/monkey_patch.py",
+      "origin": "modified"
+    },
+    {
+      "path": "mobilegym-rl/verl/verl/models/transformers/qwen3_vl.py",
+      "origin": "modified"
+    },
+    {
+      "path": "mobilegym-rl/verl/verl/trainer/config/rollout/rollout.yaml",
+      "origin": "modified"
+    },
+    {
+      "path": "mobilegym-rl/verl/verl/utils/experimental/torch_functional.py",
+      "origin": "modified"
+    },
+    {
+      "path": "mobilegym-rl/verl/verl/workers/config/rollout.py",
+      "origin": "modified"
+    },
+    {
+      "path": "mobilegym-rl/verl/verl/workers/engine/fsdp/transformer_impl.py",
+      "origin": "modified"
+    },
+    {
+      "path": "mobilegym-rl/verl/verl/workers/engine_workers.py",
+      "origin": "modified"
+    },
+    {
+      "path": "mobilegym-rl/verl/verl/workers/rollout/vllm_rollout/vllm_async_server.py",
+      "origin": "modified"
+    },
+    {
+      "path": "os/OSContext.tsx",
+      "origin": "modified"
+    },
+    {
+      "path": "os/SkinService.ts",
+      "origin": "modified"
+    },
+    {
+      "path": "os/data/benchmarkTime.ts",
+      "origin": "new"
+    },
+    {
+      "path": "os/data/simulatorConfig.ts",
+      "origin": "modified"
+    },
+    {
+      "path": "os/featureAvailability.tsx",
+      "origin": "new"
+    },
+    {
+      "path": "os/types/globals.d.ts",
+      "origin": "modified"
+    },
+    {
+      "path": "os/utils/cdn.ts",
+      "origin": "modified"
+    },
+    {
+      "path": "os/visual/config.ts",
+      "origin": "new"
+    },
+    {
+      "path": "os/visual/engine.ts",
+      "origin": "new"
+    },
+    {
+      "path": "os/visual/hooks.ts",
+      "origin": "new"
+    },
+    {
+      "path": "os/visual/layout.ts",
+      "origin": "new"
+    },
+    {
+      "path": "os/visual/registry.ts",
+      "origin": "new"
+    },
+    {
+      "path": "os/visual/service.ts",
+      "origin": "new"
+    },
+    {
+      "path": "os/visual/theme.ts",
+      "origin": "new"
+    },
+    {
+      "path": "os/visual/types.ts",
+      "origin": "new"
+    },
+    {
+      "path": "os/wmr/WmrBundleCache.ts",
+      "origin": "modified"
+    },
+    {
+      "path": "os/wmr/WmrRenderer.tsx",
+      "origin": "modified"
+    },
+    {
+      "path": "os/wmr/engine/imageCache.ts",
+      "origin": "modified"
+    },
+    {
+      "path": "os/wmr/engine/parser.ts",
+      "origin": "modified"
+    },
+    {
+      "path": "os/wmr/engine/renderer.ts",
+      "origin": "modified"
+    },
+    {
+      "path": "os/wmr/engine/resourceStrings.ts",
+      "origin": "modified"
+    },
+    {
+      "path": "public/visual_lab.html",
+      "origin": "new"
+    },
+    {
+      "path": "scripts/__init__.py",
+      "origin": "new"
+    },
+    {
+      "path": "scripts/bench/audit/trajectory_resource_audit.py",
+      "origin": "new"
+    },
+    {
+      "path": "scripts/check_release.py",
+      "origin": "new"
+    },
+    {
+      "path": "scripts/server/api_gateway.py",
+      "origin": "modified"
+    },
+    {
+      "path": "scripts/server/start_nginx_gateway.sh",
+      "origin": "modified"
+    },
+    {
+      "path": "system/Calendar/CalendarApp.tsx",
+      "origin": "modified"
+    },
+    {
+      "path": "system/Calendar/components/CalendarActionSheet.tsx",
+      "origin": "modified"
+    },
+    {
+      "path": "system/Calendar/components/CalendarBottomNav.tsx",
+      "origin": "modified"
+    },
+    {
+      "path": "system/Calendar/pages/CalendarHomePage.tsx",
+      "origin": "modified"
+    },
+    {
+      "path": "system/Calendar/res/visual.ts",
+      "origin": "new"
+    },
+    {
+      "path": "system/Clock/ClockApp.tsx",
+      "origin": "modified"
+    },
+    {
+      "path": "system/Clock/components/TabBar.tsx",
+      "origin": "modified"
+    },
+    {
+      "path": "system/Clock/navigation.declaration.ts",
+      "origin": "modified"
+    },
+    {
+      "path": "system/Clock/pages/AlarmEditModal.tsx",
+      "origin": "modified"
+    },
+    {
+      "path": "system/Clock/pages/AlarmEditorSheet.tsx",
+      "origin": "modified"
+    },
+    {
+      "path": "system/Clock/pages/AlarmPage.tsx",
+      "origin": "modified"
+    },
+    {
+      "path": "system/Clock/res/strings.en.ts",
+      "origin": "modified"
+    },
+    {
+      "path": "system/Clock/res/strings.ts",
+      "origin": "modified"
+    },
+    {
+      "path": "system/Notes/NotesApp.tsx",
+      "origin": "modified"
+    },
+    {
+      "path": "system/Notes/components/BottomTabBar.tsx",
+      "origin": "modified"
+    },
+    {
+      "path": "system/Notes/components/InputDialog.tsx",
+      "origin": "modified"
+    },
+    {
+      "path": "system/Notes/pages/FoldersPage.tsx",
+      "origin": "modified"
+    },
+    {
+      "path": "system/Notes/pages/NoteEditorPage.tsx",
+      "origin": "modified"
+    },
+    {
+      "path": "system/Notes/pages/NotesListPage.tsx",
+      "origin": "modified"
+    },
+    {
+      "path": "system/Notes/pages/PrivateNotesPage.tsx",
+      "origin": "modified"
+    },
+    {
+      "path": "system/Notes/pages/SettingsPage.tsx",
+      "origin": "modified"
+    },
+    {
+      "path": "system/Notes/pages/TodoListPage.tsx",
+      "origin": "modified"
+    },
+    {
+      "path": "system/Notes/pages/TrashPage.tsx",
+      "origin": "modified"
+    },
+    {
+      "path": "system/Notes/res/visual.ts",
+      "origin": "new"
+    },
+    {
+      "path": "tests/benchmarkTime.test.ts",
+      "origin": "new"
+    },
+    {
+      "path": "tests/cdn.test.ts",
+      "origin": "modified"
+    },
+    {
+      "path": "tests/feature_availability.test.ts",
+      "origin": "new"
+    },
+    {
+      "path": "tests/mapNorthResearchInstitute.test.ts",
+      "origin": "new"
+    },
+    {
+      "path": "tests/mapOfflineAutocomplete.test.ts",
+      "origin": "new"
+    },
+    {
+      "path": "tests/test_llm_local_proxy.py",
+      "origin": "new"
+    },
+    {
+      "path": "tests/test_release_packaging.py",
+      "origin": "new"
+    },
+    {
+      "path": "tests/visualAdapters.test.ts",
+      "origin": "new"
+    },
+    {
+      "path": "tests/visualConfig.test.ts",
+      "origin": "new"
+    },
+    {
+      "path": "tests/visualCore.test.ts",
+      "origin": "new"
+    },
+    {
+      "path": "tests/viteWatchSymlinks.test.ts",
+      "origin": "new"
+    },
+    {
+      "path": "tests/wmrImageCache.test.ts",
+      "origin": "new"
+    },
+    {
+      "path": "tests/wmrRendererLoading.test.ts",
+      "origin": "modified"
+    },
+    {
+      "path": "tests/wmrResourceStrings.test.ts",
+      "origin": "new"
+    },
+    {
+      "path": "tests/wmrVariableDefaults.test.ts",
+      "origin": "new"
+    },
+    {
+      "path": "vite.config.ts",
+      "origin": "modified"
+    }
+  ]
+}

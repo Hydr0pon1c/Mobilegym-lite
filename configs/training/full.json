@@ -1,0 +1,29 @@
+{
+  "environment": {
+    "TRAIN_SPLIT": "env_effect_v3_train",
+    "VAL_SPLIT": "env_effect_v3_test",
+    "SAMPLE_N": "1",
+    "VAL_SAMPLE_N": "1",
+    "TRAIN_SAMPLE_SEED": "41",
+    "VAL_SAMPLE_SEED": "42",
+    "DATA_SEED": "42",
+    "EPOCHS": "1",
+    "SAVE_FREQ": "4",
+    "MAX_ACTOR_CKPTS": "null",
+    "RESUME_MODE": "disable",
+    "GATEWAY_PORT": "4180"
+  },
+  "overrides": {
+    "actor_rollout_ref.rollout.server_init_concurrency": 1,
+    "train_samples": null,
+    "reference_bundle": null,
+    "train_completeness": null,
+    "val_completeness": null,
+    "shared_val": false,
+    "judge_mode": "state",
+    "eval_mode": "text",
+    "train_visual_config": null,
+    "val_visual_config": null,
+    "env_url": "https://127.0.0.1:4180/?benchmark_time_ms=1789099200000"
+  }
+}

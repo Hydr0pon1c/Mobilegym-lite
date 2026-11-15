@@ -1,0 +1,62 @@
+# Credentials and machine-local settings
+.env
+.env.*
+!.env.example
+*.local
+*.key
+*.pem
+
+# Dependencies and build output
+node_modules
+.venv*/
+venv/
+dist/
+dist-ssr/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+.coverage
+*.egg-info/
+*.tsbuildinfo
+/index.css
+
+# Model, media, run and report artifacts
+/artifacts/
+/mobilegym-data
+/mobilegym-data*.tar.gz
+/Mobilegym-lite*.zip
+/paper/
+/reports/
+/runs/
+/logs/
+/checkpoints/
+/models/
+mobilegym-rl/logs/
+mobilegym-rl/checkpoints/
+mobilegym-rl/models/
+mobilegym-rl/runs/
+mobilegym-rl/outputs/
+mobilegym-rl/eval_results/
+mobilegym-rl/swanlog/
+wandb/
+mobilegym-rl/.rllm_local/
+*.log
+
+# Generated runtime state and navigation data
+.nginx/*
+!.nginx/nginx.source.conf
+.api_gateway.pid
+.serve_api.pid
+public/sdcard/manifest.json
+public/*_nav_graph*.json
+public/*_data_graph.json
+public/*_action_tasks*.json
+apps/*/data/.bench_*_cache.json
+
+# Editors
+.DS_Store
+.idea/
+.vscode/

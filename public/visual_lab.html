@@ -1,0 +1,148 @@
+<!doctype html>
+<!--
+Copyright 2026 OPPO
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MobileGym visual configuration lab</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 24px; background: #f2f4f7; color: #202735; font: 14px/1.5 system-ui,sans-serif; }
+  main { display: flex; gap: 28px; align-items: flex-start; flex-wrap: wrap; max-width: 1080px; margin: auto; }
+  section { width: 400px; background: white; padding: 22px; border: 1px solid #d8dee8; border-radius: 10px; }
+  h1 { margin: 0 0 8px; font-size: 22px; } p { margin: 8px 0 18px; }
+  label { display: block; margin: 12px 0; } select,input,button { font: inherit; padding: 7px; }
+  select,input[type=number] { width: 100%; } input[type=range] { width: 80%; vertical-align: middle; }
+  button { cursor: pointer; margin: 4px 6px 4px 0; } iframe { width: 360px; height: 800px; border: 0; background: white; }
+  pre { white-space: pre-wrap; overflow-wrap: anywhere; max-height: 260px; overflow: auto; font-size: 11px; }
+  #status { min-height: 24px; } .error { color: #a82424; }
+</style>
+<main>
+  <section>
+    <h1>Visual configuration lab</h1>
+    <p>Shared color and layout controls. V2 covers five Apps with explicit scopes; Notes and Weather currently support theme only. Unmapped elements remain native.</p>
+    <fieldset id="controls" disabled>
+      <legend>Configuration</legend>
+      <label>Configuration version <select id="version"><option value="2">V2 multi-App core</option><option value="1">V1 Wechat compatibility</option></select></label>
+      <label>Preview App (does not change experiment scope) <select id="app"></select></label>
+      <label>Preset <select id="preset"></select></label>
+      <div id="scopes">
+        <label>Theme App scope <select id="apps" multiple size="5"></select></label>
+        <label>Layout App scope (subset of theme scope) <select id="layoutApps" multiple size="3"></select></label>
+        <small>Use Ctrl/Cmd to select multiple entries. Scope changes require Apply.</small>
+      </div>
+      <label>Theme strength <input id="strength" type="range" min="0" max="1" step="0.05" value="0"><output id="strengthValue">0</output></label>
+      <label>Palette bank <select id="palettes"><option value="blue">Blue (fixed)</option><option value="purple">Purple (fixed)</option><option value="teal">Teal (fixed)</option><option value="blue,purple,teal">Blue / purple / teal</option></select></label>
+      <label>Layout strength <select id="layout"><option>native</option><option>low</option><option>medium</option><option>high</option></select></label>
+      <label>Layout variants <select id="variants"><option>1</option><option>2</option><option>3</option></select></label>
+      <label>Seed <input id="seed" type="number" min="0" max="4294967295" step="1" value="41"></label>
+      <label>Sample index (shared by a rollout group) <input id="sample" type="number" min="0" max="4294967295" step="1" value="0"></label>
+      <button id="apply">Apply</button><button id="next">Next sample</button><button id="reset">Reference</button><button id="export">Export resolved JSON</button>
+      <label>Import config or snapshot JSON <input id="import" type="file" accept=".json,application/json"></label>
+    </fieldset>
+    <p id="coverage"></p>
+    <p id="status">Loading simulator…</p>
+    <a id="direct" target="_blank" rel="noopener">Open this configuration directly</a>
+    <pre id="resolved"></pre>
+  </section>
+  <iframe id="phone" title="MobileGym preview" src="./?visual=reference"></iframe>
+</main>
+<script type="module">
+  const $ = id => document.getElementById(id);
+  const frame = $('phone');
+  let api;
+  let catalog = [];
+  const selected = id => [...$(id).selectedOptions].map(option => option.value);
+  const selectValues = (id, values) => { for (const option of $(id).options) option.selected = values.includes(option.value); };
+  const preset = name => $('version').value === '1' ? api.preset(name) : api.presetV2(name);
+  async function openPreview() {
+    const app = catalog.find(item => item.appId === $('app').value);
+    if (app) await frame.contentWindow.__OS__.openApp(app.appId, app.previewRoute);
+  }
+  function status(message, error = false) { $('status').textContent = message; $('status').className = error ? 'error' : ''; }
+  function readControls() {
+    const config = api.getConfig();
+    config.theme = { strength: Number($('strength').value), palettes: $('palettes').value.split(',') };
+    config.layout = { strength: $('layout').value, variants: Number($('variants').value) };
+    if (config.version === 2) { config.apps = selected('apps'); config.layout.apps = selected('layoutApps'); }
+    if (!$('seed').value.trim() || !$('sample').value.trim()) throw new Error('Seed and sample must not be empty');
+    config.seed = Number($('seed').value); config.sample = Number($('sample').value);
+    return config;
+  }
+  function sync() {
+    const config = api.getConfig();
+    $('version').value = config.version;
+    $('scopes').hidden = config.version === 1;
+    $('app').disabled = config.version === 1;
+    if (config.version === 1) $('app').value = 'wechat';
+    else { selectValues('apps', config.apps); selectValues('layoutApps', config.layout.apps); }
+    $('strength').value = config.theme.strength; $('strengthValue').value = config.theme.strength;
+    $('palettes').value = config.theme.palettes.join(','); $('layout').value = config.layout.strength;
+    $('variants').value = config.layout.variants; $('seed').value = config.seed; $('sample').value = config.sample;
+    const resolved = api.snapshot();
+    $('resolved').textContent = JSON.stringify(resolved, null, 2);
+    $('direct').href = frame.contentWindow.location.href;
+    const adapter = catalog.find(item => item.appId === $('app').value);
+    const layout = resolved.layout ?? resolved.apps?.[$('app').value]?.layout;
+    $('coverage').textContent = adapter ? `${adapter.label}: ${adapter.coverage.join('; ')}. Layout: ${adapter.layout ? adapter.layout.group : 'unsupported'}.` : '';
+    status(`Applied ${resolved.configId}; preview layout displacement ${layout?.normalizedDisplacement ?? 'native / unsupported'}.`);
+  }
+  function safely(action) { try { action(); sync(); } catch (error) { status(error.message, true); } }
+  $('strength').oninput = () => { $('strengthValue').value = $('strength').value; };
+  $('layout').onchange = () => { if ($('layout').value === 'native') $('variants').value = '1'; };
+  $('preset').onchange = () => safely(() => api.setConfig(preset($('preset').value)));
+  $('version').onchange = async () => { safely(() => api.setConfig(preset($('preset').value))); try { await openPreview(); } catch (error) { status(error.message, true); } };
+  $('app').onchange = async () => { try { await openPreview(); sync(); } catch (error) { status(error.message, true); } };
+  $('apply').onclick = () => safely(() => api.setConfig(readControls()));
+  $('next').onclick = () => safely(() => { const config = readControls(); config.sample++; api.setConfig(config); });
+  $('reset').onclick = () => safely(() => { const config = api.getConfig(); config.theme.strength = 0; config.layout.strength = 'native'; config.layout.variants = 1; api.setConfig(config); $('preset').value = 'reference'; });
+  $('import').onchange = async () => {
+    try { const file = $('import').files[0]; if (!file) return; const saved = JSON.parse(await file.text()); api.setConfig(saved.config ?? saved); sync(); await openPreview(); }
+    catch (error) { status(error.message, true); }
+    finally { $('import').value = ''; }
+  };
+  $('export').onclick = () => {
+    const blob = new Blob([JSON.stringify(api.snapshot(), null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob), anchor = document.createElement('a');
+    anchor.href = url; anchor.download = `visual-${api.snapshot().configId}.json`; anchor.click();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  };
+  const started = performance.now();
+  const timer = setInterval(async () => {
+    const win = frame.contentWindow;
+    if (!win.__VISUAL__ || !win.__OS__?.openApp) {
+      if (performance.now() - started > 90000) { clearInterval(timer); status('Simulator did not become ready. Check its console and resource loading.', true); }
+      return;
+    }
+    clearInterval(timer);
+    try {
+      api = win.__VISUAL__;
+      catalog = api.catalog();
+      for (const app of catalog) {
+        for (const id of ['app', 'apps', ...(app.layout ? ['layoutApps'] : [])]) {
+          const option = document.createElement('option'); option.value = app.appId; option.textContent = app.label; $(id).append(option);
+        }
+      }
+      for (const name of api.profiles()) { const option = document.createElement('option'); option.value = name; option.textContent = name; $('preset').append(option); }
+      $('version').value = new URLSearchParams(location.search).get('version') === '1' ? '1' : '2';
+      api.setConfig(preset('reference'));
+      await openPreview();
+      $('controls').disabled = false; sync();
+    } catch (error) { status(error.message, true); }
+  }, 200);
+</script>
+</html>

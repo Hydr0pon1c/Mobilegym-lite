@@ -1,0 +1,8 @@
+{
+  "version": 2,
+  "apps": ["wechat", "wechat_reading", "calendar", "notes", "weather"],
+  "theme": { "strength": 0, "palettes": ["blue"] },
+  "layout": { "strength": "native", "variants": 1, "apps": ["wechat", "wechat_reading", "calendar"] },
+  "seed": 41,
+  "sample": 0
+}
